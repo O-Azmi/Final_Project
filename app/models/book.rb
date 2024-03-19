@@ -2,9 +2,9 @@ class Book < ApplicationRecord
     alias_attribute :book_date, :bok_date
 
     has_one_attached :book_image
-    belongs_to :genre, optional: true
-    belongs_to :publisher, optional: true
-    belongs_to :author, optional: true
+    belongs_to :genre
+    belongs_to :publisher
+    belongs_to :author
   
     has_many :order_details
     has_many :orders, through: :order_details

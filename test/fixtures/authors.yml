@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author_name: MyString
+  author_birthdate: 2024-03-19
+  author_birthplace: MyString
+
+two:
+  author_name: MyString
+  author_birthdate: 2024-03-19
+  author_birthplace: MyString

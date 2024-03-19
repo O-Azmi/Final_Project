@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_152530) do
 
   create_table "books", force: :cascade do |t|
     t.string "book_name"
-    t.date "bok_date"
+    t.date "book_date"
     t.decimal "book_price"
     t.text "book_description"
     t.datetime "created_at", null: false

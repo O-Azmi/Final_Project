@@ -37,7 +37,7 @@ csv_file_books = Rails.root.join('db/books.csv')
 csv_data_books = File.read(csv_file_books)
 books_csv = CSV.parse(csv_data_books, headers: true)
 
-books_csv.take(50).each do |book|
+books_csv.take(100).each do |book|
   author = Author.order('RANDOM()').first 
   publisher = Publisher.order('RANDOM()').first 
   genre = Genre.order('RANDOM()').first

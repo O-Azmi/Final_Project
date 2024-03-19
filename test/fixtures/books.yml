@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_name: MyString
+  bok_date: 2024-03-19
+  book_price: 9.99
+  book_description: MyText
+
+two:
+  book_name: MyString
+  bok_date: 2024-03-19
+  book_price: 9.99
+  book_description: MyText

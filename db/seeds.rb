@@ -8,3 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+csv_file_authors = Rails.root.join('db/books.csv')
+csv_data_authors = File.read(csv_file_authors)
+authors = CSV.parse(csv_data_authors, headers: true)

@@ -1,0 +1,10 @@
+<h1>Zira Book Store</h1>
+
+<h2> Book details:</h2>
+<%= image_tag @book.book_image %>
+<p>Book name:<%= @book.book_name %></p>
+<p>Price: <%= number_to_currency(@book.book_price) %>.</p>
+<p>Author: <%= @book.author.author_name %>.</p>
+<p>Genre: <%= @book.genre.genre_name %>.</p>
+<p>Publisher: <%= @book.publisher.publisher_name %>.</p>
+<p>Description:<%= @book.book_description %>.</p>

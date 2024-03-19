@@ -42,7 +42,7 @@ books_csv.take(50).each do |book|
   publisher = Publisher.order('RANDOM()').first 
   genre = Genre.order('RANDOM()').first
 
-  Book.create(
+  Book.find_or_create_by(
     book_name: book['Book-Title'],
     book_date: Faker::Date.between(from: 50.years.ago, to: Date.today),
     book_price: Faker::Commerce.price(range: 10.0..100.0),

@@ -41,7 +41,8 @@ gem "sassc"
 # Add faker gem
 gem "faker"
 
-
+# Add kaminari gem
+gem "kaminari"
 
 
 

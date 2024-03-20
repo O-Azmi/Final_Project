@@ -1,0 +1,18 @@
+<h1>Zira Book Store</h1>
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Books', books_path %></li>
+    <li><%= link_to 'Authors', authors_path %></li>
+  </ul>
+</nav>
+
+<div>
+  <h1>All Authors</h1>
+  <ul>
+    <% @authors.each do |author| %>
+      <li><%= link_to author.author_name, author_path(author) %></li>
+    <% end %>
+  </ul>
+</div>
+<%= paginate @authors %>

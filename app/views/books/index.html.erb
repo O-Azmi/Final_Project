@@ -1,8 +1,29 @@
 <h1>Zira Book Store</h1>
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Books', books_path %></li>
+    <li><%= link_to 'Authors', authors_path %></li>
+  </ul>
+</nav>
+<%= form_with(url: books_path, method: "get") do |form| %>
+    <div>
+      <%= form.collection_select :genre_id, Genre.all, :id, ->(genre) { genre.genre_name.capitalize }, { include_blank: "All genres" }, { selected: params[:genre_id] } %>
+    </div>
+    <div>
+      <%= form.text_field :search, placeholder: "Search for a book by title or description" %>
+    </div>
+    <div>
+      <%= form.submit "Filter" %>
+    </div>
+  <% end %>
+  
+<h2>Our Book Collection</h2>
 
-<h2> Our collection</h2>
 <ul>
   <% @books.each do |book| %>
     <li><%= link_to book.book_name, book_path(book) %></li>
   <% end %>
 </ul>
+
+<%= paginate @books %>

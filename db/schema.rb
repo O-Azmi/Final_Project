@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_19_182659) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_20_203011) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -97,6 +97,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_182659) do
     t.string "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "province_id", null: false
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["province_id"], name: "index_customers_on_province_id"
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
@@ -138,4 +147,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_182659) do
   add_foreign_key "books", "authors"
   add_foreign_key "books", "genres"
   add_foreign_key "books", "publishers"
+  add_foreign_key "customers", "provinces"
 end

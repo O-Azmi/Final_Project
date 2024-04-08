@@ -1,15 +1,20 @@
 <h1>Zira Book Store</h1>
+<% if customer_signed_in? %>
+  <p>Welcome <%= current_customer.username %>!</p>
+  <%= form_tag destroy_customer_session_path, method: :delete do %>
+    <%= submit_tag "Logout" %>
+  <% end %>  <% else %>
+  <%= link_to 'Login', new_customer_session_path %>
+<% end %>
 <nav>
   <ul>
     <li><%= link_to 'Home', root_path %></li>
     <li><%= link_to 'Books', books_path %></li>
+    <li><%= link_to 'Genres', genres_path %></li>
     <li><%= link_to 'Authors', authors_path %></li>
   </ul>
 </nav>
 <%= form_with(url: books_path, method: "get") do |form| %>
-    <div>
-      <%= form.collection_select :genre_id, Genre.all, :id, ->(genre) { genre.genre_name.capitalize }, { include_blank: "All genres" }, { selected: params[:genre_id] } %>
-    </div>
     <div>
       <%= form.text_field :search, placeholder: "Search for a book by title or description" %>
     </div>

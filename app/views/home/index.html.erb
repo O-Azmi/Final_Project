@@ -1,8 +1,17 @@
 <h1>Zira book store</h1>
+
+<% if customer_signed_in? %>
+  <p>Welcome <%= current_customer.username %>!</p>
+  <%= form_tag destroy_customer_session_path, method: :delete do %>
+    <%= submit_tag "Logout" %>
+  <% end %>  <% else %>
+  <%= link_to 'Login', new_customer_session_path %>
+<% end %>
 <nav>
   <ul>
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Books', books_path %></li>
-    <li><%= link_to 'Authors', authors_path %></li>
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'Books', books_path %></li>
+  <li><%= link_to 'Genres', genres_path %></li>
+  <li><%= link_to 'Authors', authors_path %></li>
   </ul>
 </nav>

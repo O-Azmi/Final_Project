@@ -1,0 +1,18 @@
+<h1><%= @genre.genre_name %></h1>
+<% if customer_signed_in? %>
+  <p>Welcome <%= current_customer.username %>!</p>
+  <%= form_tag destroy_customer_session_path, method: :delete do %>
+    <%= submit_tag "Logout" %>
+  <% end %>  <% else %>
+  <%= link_to 'Login', new_customer_session_path %>
+<% end %>
+<li><%= link_to 'Home', root_path %></li>
+<li><%= link_to 'Books', books_path %></li>
+<li><%= link_to 'Genres', genres_path %></li>
+<li><%= link_to 'Authors', authors_path %></li>
+<h2>Books in <%= @genre.genre_name %></h2>
+<ul>
+  <% @books.each do |book| %>
+    <li><%= link_to book.book_name, book_path(book) %></li>
+  <% end %>
+</ul>

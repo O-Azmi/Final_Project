@@ -1,18 +1,27 @@
 <h1>Zira Book Store</h1>
+<% if customer_signed_in? %>
+  <p>Welcome <%= current_customer.username %>!</p>
+  <%= form_tag destroy_customer_session_path, method: :delete do %>
+    <%= submit_tag "Logout" %>
+  <% end %>
+<% else %>
+  <%= link_to 'Login', new_customer_session_path %>
+<% end %>
 <nav>
   <ul>
     <li><%= link_to 'Home', root_path %></li>
     <li><%= link_to 'Books', books_path %></li>
+    <li><%= link_to 'Genres', genres_path %></li>
     <li><%= link_to 'Authors', authors_path %></li>
   </ul>
 </nav>
-<h2> Book details:</h2>
-<% if @book.book_image.present? %>
+<h2>Book details:</h2>
+<% if @book.book_image.attached? %>
   <%= image_tag @book.book_image %>
 <% end %>
-<p>Book name:<%= @book.book_name %></p>
-<p>Price: <%= number_to_currency(@book.book_price) %>.</p>
-<p>Author: <%= @book.author.author_name %>.</p>
-<p>Genre: <%= @book.genre.genre_name %>.</p>
-<p>Publisher: <%= @book.publisher.publisher_name %>.</p>
-<p>Description:<%= @book.book_description %>.</p>
+<p>Book name: <%= @book.book_name %></p>
+<p>Price: <%= number_to_currency(@book.book_price) %></p>
+<p>Author: <%= @book.author.author_name %></p>
+<p>Genre: <%= @book.genre.genre_name %></p>
+<p>Publisher: <%= @book.publisher.publisher_name %></p>
+<p>Description: <%= @book.book_description %></p>

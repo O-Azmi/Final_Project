@@ -60,6 +60,9 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def sign_up_params
-    params.require(:customer).permit(:full_name, :username, :address, :email, :password)
+    params.require(:customer).permit(:full_name, :username, :address, :email, :password, :province_id)
+  end
+  def after_sign_up_path_for(resource)
+    root_path
   end
 end

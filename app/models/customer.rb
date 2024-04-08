@@ -6,7 +6,6 @@ class Customer < ApplicationRecord
     belongs_to :province, optional: true
     has_many :orders
   
-    validates :full_name, :email_address, :address, :username, :password, :zip_code, presence: true
     validates :password, length: { minimum: 6 }
     
     def self.ransackable_attributes(auth_object = nil)
